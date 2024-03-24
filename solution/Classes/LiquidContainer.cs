@@ -6,8 +6,10 @@ public class LiquidContainer : Container, IHazardNotifier
     
     public LiquidContainer(int height, double weight, double width, double depth, double maxLoad) : base(height, weight, width, depth, maxLoad)
     {
-        
+        this.SerialNumber = "KON-L-" + Container.ContainerCount;
     }
+    
+    
 
     public void Load(double loadWeight)
     {
@@ -33,5 +35,10 @@ public class LiquidContainer : Container, IHazardNotifier
     public void NotifyOfDanger(string message, string serialNumber)
     {
         Console.WriteLine(serialNumber + ": " + message);
+    }
+
+    public override string ToString()
+    {
+        return "Liquid " + base.ToString() + (this.containsDangerousLoad ? " Carries dangerous load" : " Does not carry dangerous load");
     }
 }

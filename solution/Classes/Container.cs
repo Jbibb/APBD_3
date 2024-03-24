@@ -2,6 +2,8 @@
 
 public abstract class Container
 {
+    private static int containerCount = 0;
+    
     private double loadWeight = 0;
     private int height;
     private double weight;
@@ -33,11 +35,13 @@ public abstract class Container
     public double LoadWeight
     {
         get { return loadWeight; }
+        set { loadWeight = value;  }
     }
 
     public string SerialNumber
     {
         get { return serialNumber; }
+        set { serialNumber = value; }
     }
 
     public double MaxLoad
@@ -45,4 +49,23 @@ public abstract class Container
         get { return MaxLoad; }
     }
 
+    public override string ToString()
+    {
+        return "Container " + serialNumber + "\tLoad: " + loadWeight + "/" + maxLoad + " kg\tContainer weight: " + weight +
+               "\tSize: " + width + "x" + depth + "x" + height + "m";
+    }
+
+    public static int ContainerCount
+    {
+        get
+        {
+            containerCount++;
+            return containerCount;
+        }
+    }
+
+    public double Weight
+    {
+        get { return weight; }
+    }
 }
